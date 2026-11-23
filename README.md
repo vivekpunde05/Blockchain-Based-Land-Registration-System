@@ -105,25 +105,17 @@ The application will launch automatically at `http://localhost:3000`.
 
 ## 📸 Application Screenshots
 
-Landing Page | Buyer Registration
-:---: | :---:
-<img src="Screenshots/landing.png" height="200"> | <img src="Screenshots/registration.png" height="200">
-
-Buyer Dashboard | Seller Dashboard
-:---: | :---:
-<img src="Screenshots/buyer dashboard.png" height="200"> | <img src="Screenshots/seller dashboard2.png" height="200">
-
-Add Land (Seller) | Land Gallery
-:---: | :---:
-<img src="Screenshots/add land.png" height="200"> | <img src="Screenshots/Land Gallery.png" height="200">
-
-Help & FAQ Page | Admin Verification
-:---: | :---:
-<img src="Screenshots/help.png" height="200"> | <img src="Screenshots/verify buyer.png" height="200">
-
-Approve Request | Payment Transfer
-:---: | :---:
-<img src="Screenshots/approve request.png" height="200"> | <img src="Screenshots/payment.png" height="200">
+| User Login | Land Inspector Login |
+| :---: | :---: |
+| <img src="client/public/Screenshot%202026-11-17%20175443.png" width="480" alt="User login portal" /> | <img src="client/public/Screenshot%202026-11-17%20180851.png" width="480" alt="Land inspector login portal" /> |
+| Land Inspector Dashboard | Land Records & Approvals |
+| <img src="client/public/Screenshot%202026-11-17%20174737.png" width="480" alt="Land inspector dashboard" /> | <img src="client/public/Screenshot%202026-11-17%20175036.png" width="480" alt="Land records and approvals" /> |
+| Register a Property | Property Marketplace |
+| <img src="client/public/Screenshot%202026-11-17%20175644.png" width="480" alt="Register a land property" /> | <img src="client/public/Screenshot%202026-11-17%20180551.png" width="480" alt="Registered properties marketplace" /> |
+| MetaMask Accounts | MetaMask Transaction Confirmation |
+| <img src="client/public/Screenshot%202026-11-17%20180027.png" width="240" alt="MetaMask accounts used with the application" /> | <img src="client/public/Screenshot%202026-11-17%20180731.png" width="240" alt="MetaMask transaction confirmation" /> |
+| Blockchain Transaction Ledger | Transaction Details |
+| <img src="client/public/Screenshot%202026-11-17%20181006.png" width="480" alt="Blockchain transaction ledger" /> | <img src="client/public/Screenshot%202026-11-17%20175223.png" width="480" alt="Blockchain transaction details" /> |
 
 ---
 
