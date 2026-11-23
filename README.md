@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🏛️ BhumiChain (भूमिChain)
+# 🏛️ BLOCKCHAIN-BASED LAND REGISTRATION SYSTEM
 ### *Decentralized Land Title Registration & Real Estate Escrow System*
 
 [![Solidity](https://img.shields.io/badge/Solidity-^0.5.16-363636?style=for-the-badge&logo=solidity&logoColor=white)](https://soliditylang.org/)
