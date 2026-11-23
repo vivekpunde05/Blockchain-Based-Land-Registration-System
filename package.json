@@ -1,0 +1,11 @@
+{
+  "name": "land-registration-root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BhumiChain - Decentralized Land Registration System using Blockchain",
+  "scripts": {
+    "start": "cd client && npm start",
+    "compile": "truffle compile",
+    "migrate": "truffle migrate --reset"
+  }
+}
