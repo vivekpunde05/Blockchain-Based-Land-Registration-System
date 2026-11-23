@@ -1,109 +1,143 @@
-# Decentralized Land Registration System Using Blockchain
+# Blockchain-Based Land Registration System
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Ethereum-Blockchain-3C3C3D?style=for-the-badge&logo=ethereum&logoColor=white" />
-  <img src="https://img.shields.io/badge/Solidity-Smart%20Contracts-363636?style=for-the-badge&logo=solidity&logoColor=white" />
-  <img src="https://img.shields.io/badge/React-17.0.2-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
-  <img src="https://img.shields.io/badge/Truffle-Ganache-E4A14B?style=for-the-badge&logo=truffle&logoColor=white" />
-  <img src="https://img.shields.io/badge/MetaMask-Web3-E2761B?style=for-the-badge&logo=metamask&logoColor=white" />
-</p>
+BhumiChain is an academic prototype for registering land records, reviewing user and property submissions, and demonstrating property transfers on a local Ethereum-compatible blockchain. The repository contains a Solidity smart contract, a React/Web3 client, Truffle migrations, and local development scripts.
 
----
+> **Prototype only:** This project is not a production land registry, legal-record system, or secure identity platform. Read the [privacy and security limitations](#privacy-and-security-limitations) before using it.
 
-## 🏛️ Academic Information
+## Project information
 
 - **Institution:** Loknete Shamrao Peje Government College of Engineering
-- **Department:** Department of Artificial Intelligence & Data Science
-- **Project Type:** Capstone Final Year Engineering Project
-- **Academic Year / Semester:** Final Year / 7th Semester (2026-2027)
+- **Department:** Artificial Intelligence & Data Science
+- **Project:** Capstone final-year engineering project
+- **Academic year / semester:** 2026–2027 / Final Year, 7th Semester
 
-### 👨‍💻 Project Team Members
+| Team member | Student ID | Role |
+| :--- | :--- | :--- |
+| Vivek Punde | `23030421995010` | Lead developer and smart contracts |
+| Aryan Mhatre | `23030421995042` | Frontend and Web3 integration |
+| Rohit Dongre | `23030421995006` | Testing and blockchain verification |
 
-| Name | Roll Number / Student ID | Email | Role |
-| :--- | :--- | :--- | :--- |
-| **Vivek Punde** | `23030421995010` | vivekpunde6@gmail.com | Lead Developer / Smart Contracts |
-| **Aryan Mhatre** | `23030421995042` | — | Frontend & Web3 Integration |
-| **Rohit Dongre** | `23030421995006` | — | Testing & Blockchain Verification |
+## What the application does
 
----
+A registered citizen account can act as both a buyer and a seller. The Land Inspector is the wallet that deploys the contract.
 
-## 📖 Project Overview
+- **Citizen registration:** Collects profile and identity fields and associates the registration with the connected wallet.
+- **Inspector review:** Provides user management and land-record screens to review, verify, or reject submissions.
+- **Land registration:** A verified user can submit a parcel with its area, location, price, property ID, survey number, and document reference.
+- **Property management:** Owners can view their parcels, list verified land for sale, change the listed price, or cancel a listing.
+- **Marketplace and offers:** Users can browse properties, submit purchase requests, view sent requests, and accept or reject incoming requests as the owner.
+- **Payment and ownership history:** The client demonstrates payment through MetaMask. The contract records transfer details and updates the recorded owner; the client also provides ownership lookup and transaction-history screens.
+- **Inspector dashboard:** Shows user, land-approval, and transaction information.
 
-Land registration systems in many jurisdictions suffer from bureaucratic delays, physical record tampering, fraud, and lack of transparency. Duplicate deeds and illegal transfers often lead to lengthy litigation.
+The intended user flow is: register a citizen wallet → have the Inspector review the account → register a parcel → have the Inspector review the parcel → list it → submit and review a purchase request → complete a wallet transaction.
 
-This project delivers a **Decentralized Land Registration & Ownership Transfer Platform** built on the **Ethereum Blockchain**. It leverages smart contracts and decentralized storage (IPFS) to guarantee that all land records, user identities, and financial transactions remain **immutable, auditable, and secure**.
+## How it is implemented
 
-### 🌟 Key Features
+- **Frontend:** React 17, React Router 5, Bootstrap/Reactstrap, and Web3.js 1.x.
+- **Smart contract:** Solidity contract in [`contracts/Land.sol`](contracts/Land.sol), compiled with Solidity 0.5.16 in the checked-in artifact.
+- **Local chain and migrations:** Ganache and Truffle; the development network uses RPC `127.0.0.1:7545`, network ID `5777`, and chain ID `1337`.
+- **Contract artifact:** Truffle writes the ABI and network deployment data to `client/src/artifacts/`.
+- **No application backend:** The browser connects to the blockchain through MetaMask/Web3.
 
-1. **Role-Based Access Control**:
-   - **Land Inspector (Government Admin)**: Deployed automatically from the deployer wallet. Verifies user identities (Aadhar, PAN) and approves land ownership transfers.
-   - **Seller**: Verified land owners register properties with geometric details, pricing (in ETH), PID, survey number, and title deeds.
-   - **Buyer**: Verified citizens explore the marketplace, request land purchases, and transfer payments directly via Ethereum cryptocurrency.
-2. **Cryptographic Verification**:
-   - Users cannot list land or request purchases until identity documents are validated by the Land Inspector.
-3. **Decentralized Storage (IPFS)**:
-   - Property photos and legal title deeds are cryptographically hashed and referenced on-chain.
-4. **Transparent Ownership Transfer**:
-   - Automatic record update upon payment receipt and administrative verification.
+### Repository layout
 
----
+| Path | Purpose |
+| :--- | :--- |
+| `contracts/` | Solidity contract |
+| `migrations/` | Truffle deployment migrations |
+| `test/` | Truffle contract tests (see note below) |
+| `client/src/views/` | Citizen, Inspector, marketplace, land, and transaction screens |
+| `client/src/layouts/` and `client/src/routes*.js` | Role-specific application layouts and routes |
+| `client/src/artifacts/` | Contract ABI and deployment metadata used by the client |
+| `client/public/` | React static assets and application screenshots |
+| `*.bat` | Windows development helper scripts |
 
-## 🛠️ Tech Stack
+## Run locally (Windows)
 
-- **Blockchain Engine:** Ethereum Virtual Machine (EVM), Solidity (`>= 0.5.2`)
-- **Development & Testing:** Truffle Suite, Ganache Local Blockchain
-- **Web3 Wallet Provider:** MetaMask Browser Extension
-- **Client Application:** React.js, Web3.js, Drizzle, Reactstrap, Bootstrap, Chart.js
-- **Decentralized File Storage:** IPFS (InterPlanetary File System)
+### Prerequisites
 
----
+- Node.js and npm. Node.js 16 LTS is a suitable choice for this React Scripts 4 project.
+- Truffle CLI and Ganache CLI.
+- MetaMask in a browser.
 
-## 🚀 Setup & Execution Guide
+Install the blockchain command-line tools if they are not already installed:
 
-### 1. Prerequisites
-Ensure you have the following installed:
-- [Node.js](https://nodejs.org/) (Recommended: **v16.20.2 LTS** using NVM)
-- [Ganache](https://trufflesuite.com/ganache/) (GUI or CLI)
-- [MetaMask](https://metamask.io/) Extension in Chrome / Edge / Brave
-
-### 2. Configure Ganache
-1. Launch **Ganache** and choose **Quickstart Ethereum**.
-2. Verify settings:
-   - **RPC Server:** `HTTP://127.0.0.1:7545`
-   - **Network ID:** `5777`
-
-### 3. Smart Contract Deployment
-Open a terminal in the root directory:
 ```powershell
-# Compile the Solidity smart contracts
-truffle compile --all
-
-# Deploy contracts onto your local Ganache network
-truffle migrate --reset
+npm install --global truffle ganache
 ```
 
-### 4. Configure MetaMask
-1. Add a custom RPC network:
-   - **Network Name:** `Ganache Local`
-   - **RPC URL:** `http://127.0.0.1:7545`
-   - **Chain ID:** `1337` (or `5777`)
-   - **Currency Symbol:** `ETH`
-2. Import at least 3 accounts from Ganache into MetaMask using their Private Keys:
-   - **Account 0 (Deployer):** Land Inspector / Admin
-   - **Account 1:** Seller
-   - **Account 2:** Buyer
+### 1. Install frontend dependencies
 
-### 5. Start the React Frontend
+From the repository root:
+
 ```powershell
 cd client
 npm install
+cd ..
+```
+
+### 2. Start Ganache
+
+In a separate terminal, start a local chain with the expected port and IDs:
+
+```powershell
+ganache --server.port 7545 --chain.networkId 5777 --chain.chainId 1337
+```
+
+Alternatively, use Ganache Desktop and configure the RPC port to `7545`, network ID to `5777`, and chain ID to `1337`.
+
+### 3. Compile and deploy the contract
+
+From the repository root, with Ganache running:
+
+```powershell
+truffle compile
+truffle migrate --reset
+```
+
+The migration deploys `Land` and updates the artifact in `client/src/artifacts/`. The wallet that deploys the contract becomes the Land Inspector.
+
+### 4. Connect MetaMask
+
+Add a custom network with:
+
+| Setting | Value |
+| :--- | :--- |
+| Network name | Ganache Local |
+| RPC URL | `http://127.0.0.1:7545` |
+| Chain ID | `1337` |
+| Currency symbol | `ETH` |
+
+Use accounts from this local Ganache instance for the Inspector and test citizens. Import accounts only into a development wallet; never use real or valuable accounts with this prototype.
+
+### 5. Start the frontend
+
+From the repository root:
+
+```powershell
 npm start
 ```
-The application will launch automatically at `http://localhost:3000`.
 
----
+The React app runs at [http://localhost:3000](http://localhost:3000). You can also start it from the `client` directory with `npm start`.
 
-## 📸 Application Screenshots
+The repository includes Windows helper scripts such as `start-blockchain.bat`, `deploy-contracts.bat`, and `start-client.bat`. Some scripts assume globally installed tools and a machine-specific PATH; use the commands above if a helper script does not work in your environment.
+
+## Privacy and security limitations
+
+This code is a local demonstration and should not be used to store real personal information or handle real property or funds.
+
+- The contract stores profile details including Aadhaar and PAN fields directly on-chain. Blockchain data is not private or erasable; use synthetic test data only.
+- The document helper does **not** upload files to IPFS. It creates placeholder `Qm...`-style identifiers and stores uploaded document previews in that browser's `localStorage`; another browser or device will not have those files. The IPFS gateway link in the viewer does not make these uploads decentralized.
+- The username/password login is demo UI logic, not production authentication. It is not a security boundary for the role-specific pages.
+- The contract's payment function does not enforce the listed sale price or require an accepted purchase request before transferring ownership. Do not rely on the UI flow as a contract-level safety check.
+- `start-blockchain.bat` uses a fixed, publicly visible development mnemonic. It is for a disposable local chain only. Never use that mnemonic, its accounts, or their keys on a public network.
+- The contract and application have not been hardened for production use, legal compliance, identity-data protection, or real-asset custody.
+
+## Tests
+
+The Truffle test file is [`test/land.js`](test/land.js). It contains legacy expectations and references contract methods that are not present in the current `Land.sol`; update the tests before treating them as validation of the current contract.
+
+## Screenshots
 
 | User Login | Land Inspector Login |
 | :---: | :---: |
@@ -117,8 +151,6 @@ The application will launch automatically at `http://localhost:3000`.
 | Blockchain Transaction Ledger | Transaction Details |
 | <img src="client/public/Screenshot%202026-11-17%20181006.png" width="480" alt="Blockchain transaction ledger" /> | <img src="client/public/Screenshot%202026-11-17%20175223.png" width="480" alt="Blockchain transaction details" /> |
 
----
+## License
 
-## 📜 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-#
+This project is licensed under the MIT License. See [`LICENSE`](LICENSE).
